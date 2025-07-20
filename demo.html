@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI 코딩 튜터 - 알고리즘 생성기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 헤더 -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-900">AI 코딩 튜터</h1>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">로그인</button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- 히어로 섹션 -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                🚀 AI로 알고리즘을 자동 생성하세요!
+            </h2>
+            <p class="text-xl text-gray-600 mb-8">
+                8개 언어 지원 • 실시간 랭킹 • 개인 맞춤 튜터링
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">🦀 Rust</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">🐍 Python</span>
+                <span class="px-3 py-1 bg-cyan-100 text-cyan-800 rounded-full text-sm font-medium">🐹 Go</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">⚡ Vlang</span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">🟨 JavaScript</span>
+                <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">☕ Java</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">🔧 C</span>
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">⚙️ C++</span>
+            </div>
+        </div>
+
+        <!-- 알고리즘 생성기 데모 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i data-lucide="sparkles" class="w-6 h-6 mr-2 text-blue-600"></i>
+                알고리즘 생성기
+            </h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">문제 설명</label>
+                    <textarea 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        rows="4"
+                        placeholder="예: 두 수의 합을 구하는 함수를 만들어주세요"
+                        id="problemInput">두 수의 합을 구하는 함수를 만들어주세요</textarea>
+                    
+                    <label class="block text-sm font-medium text-gray-700 mt-4 mb-2">프로그래밍 언어</label>
+                    <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" id="languageSelect">
+                        <option value="python">🐍 Python</option>
+                        <option value="rust">🦀 Rust</option>
+                        <option value="go">🐹 Go</option>
+                        <option value="javascript">🟨 JavaScript</option>
+                        <option value="java">☕ Java</option>
+                        <option value="c">🔧 C</option>
+                        <option value="cpp">⚙️ C++</option>
+                        <option value="vlang">⚡ Vlang</option>
+                    </select>
+                    
+                    <button 
+                        onclick="generateAlgorithm()" 
+                        class="w-full mt-4 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center">
+                        <i data-lucide="zap" class="w-5 h-5 mr-2"></i>
+                        AI로 생성하기
+                    </button>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">생성된 코드</label>
+                    <div class="code-block h-64 overflow-y-auto" id="generatedCode">
+def add_two_numbers(a, b):
+    """
+    두 수의 합을 구하는 함수
+    
+    Args:
+        a: 첫 번째 숫자
+        b: 두 번째 숫자
+    
+    Returns:
+        두 수의 합
+    """
+    return a + b
+
+# 사용 예시
+result = add_two_numbers(5, 3)
+print(f"결과: {result}")  # 출력: 결과: 8
+
+# 테스트 케이스
+test_cases = [
+    (1, 2, 3),
+    (10, -5, 5),
+    (0, 0, 0),
+    (-3, -7, -10)
+]
+
+for a, b, expected in test_cases:
+    result = add_two_numbers(a, b)
+    print(f"add_two_numbers({a}, {b}) = {result} ({'✓' if result == expected else '✗'})")
+                    </div>
+                    
+                    <div class="flex space-x-2 mt-4">
+                        <button class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center">
+                            <i data-lucide="thumbs-up" class="w-4 h-4 mr-2"></i>
+                            좋아요 (127)
+                        </button>
+                        <button class="flex-1 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
+                            <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                            저장
+                        </button>
+                        <button class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                            <i data-lucide="share" class="w-4 h-4 mr-2"></i>
+                            공유
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 랭킹 섹션 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i data-lucide="trophy" class="w-6 h-6 mr-2 text-yellow-500"></i>
+                실시간 알고리즘 랭킹
+            </h3>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b">
+                            <th class="text-left py-3 px-4 font-semibold text-gray-700">순위</th>
+                            <th class="text-left py-3 px-4 font-semibold text-gray-700">알고리즘</th>
+                            <th class="text-left py-3 px-4 font-semibold text-gray-700">언어</th>
+                            <th class="text-left py-3 px-4 font-semibold text-gray-700">평점</th>
+                            <th class="text-left py-3 px-4 font-semibold text-gray-700">작성자</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4">🥇 1</td>
+                            <td class="py-3 px-4 font-medium">최적화된 퀵소트</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-sm">🦀 Rust</span></td>
+                            <td class="py-3 px-4">⭐⭐⭐⭐⭐ 4.9</td>
+                            <td class="py-3 px-4">김개발</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4">🥈 2</td>
+                            <td class="py-3 px-4 font-medium">다이나믹 프로그래밍 피보나치</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">🐍 Python</span></td>
+                            <td class="py-3 px-4">⭐⭐⭐⭐⭐ 4.8</td>
+                            <td class="py-3 px-4">박코딩</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4">🥉 3</td>
+                            <td class="py-3 px-4 font-medium">병렬 머지소트</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 bg-cyan-100 text-cyan-800 rounded text-sm">🐹 Go</span></td>
+                            <td class="py-3 px-4">⭐⭐⭐⭐☆ 4.7</td>
+                            <td class="py-3 px-4">이알고</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4">4</td>
+                            <td class="py-3 px-4 font-medium">이진 검색 트리</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 bg-red-100 text-red-800 rounded text-sm">☕ Java</span></td>
+                            <td class="py-3 px-4">⭐⭐⭐⭐☆ 4.6</td>
+                            <td class="py-3 px-4">정자바</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-3 px-4">5</td>
+                            <td class="py-3 px-4 font-medium">해시맵 구현</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">🟨 JavaScript</span></td>
+                            <td class="py-3 px-4">⭐⭐⭐⭐☆ 4.5</td>
+                            <td class="py-3 px-4">최스크립트</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 기능 소개 -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="brain" class="w-8 h-8 text-blue-600"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">AI 기반 생성</h4>
+                <p class="text-gray-600">GPT-4를 활용한 최신 AI 기술로 최적화된 알고리즘을 자동 생성합니다.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="users" class="w-8 h-8 text-green-600"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">커뮤니티 랭킹</h4>
+                <p class="text-gray-600">사용자들이 평가한 알고리즘 랭킹 시스템으로 최고의 코드를 발견하세요.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="graduation-cap" class="w-8 h-8 text-purple-600"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">개인 튜터링</h4>
+                <p class="text-gray-600">AI 튜터가 코드를 분석하고 개선점을 제안하여 실력 향상을 도와줍니다.</p>
+            </div>
+        </div>
+
+        <!-- CTA 섹션 -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-center text-white">
+            <h3 class="text-3xl font-bold mb-4">지금 시작하세요!</h3>
+            <p class="text-xl mb-6">무료로 AI 코딩 튜터를 체험해보세요.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold">
+                    무료 체험 시작
+                </button>
+                <button class="px-8 py-3 border-2 border-white text-white rounded-lg hover:bg-white hover:text-blue-600 transition-colors font-semibold">
+                    프리미엄 구독
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold">AI 코딩 튜터</h3>
+                </div>
+                <p class="text-gray-400 mb-6">AI로 더 나은 개발자가 되어보세요</p>
+                <div class="text-sm text-gray-500">
+                    © 2024 AI 코딩 튜터. 모든 권리 보유.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 아이콘 초기화
+        lucide.createIcons();
+
+        // 알고리즘 생성 데모 함수
+        function generateAlgorithm() {
+            const problem = document.getElementById('problemInput').value;
+            const language = document.getElementById('languageSelect').value;
+            const codeBlock = document.getElementById('generatedCode');
+            
+            // 로딩 애니메이션
+            codeBlock.innerHTML = '<div class="flex items-center justify-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div><span class="ml-2">AI가 코드를 생성하고 있습니다...</span></div>';
+            
+            // 언어별 샘플 코드
+            const sampleCodes = {
+                python: `def add_two_numbers(a, b):
+    """
+    두 수의 합을 구하는 함수
+    
+    Args:
+        a: 첫 번째 숫자
+        b: 두 번째 숫자
+    
+    Returns:
+        두 수의 합
+    """
+    return a + b
+
+# 사용 예시
+result = add_two_numbers(5, 3)
+print(f"결과: {result}")  # 출력: 결과: 8`,
+                
+                rust: `// 두 수의 합을 구하는 함수
+fn add_two_numbers(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn main() {
+    let result = add_two_numbers(5, 3);
+    println!("결과: {}", result); // 출력: 결과: 8
+    
+    // 테스트 케이스
+    let test_cases = [(1, 2, 3), (10, -5, 5), (0, 0, 0)];
+    for (a, b, expected) in test_cases.iter() {
+        let result = add_two_numbers(*a, *b);
+        println!("add_two_numbers({}, {}) = {} {}", 
+                a, b, result, 
+                if result == *expected { "✓" } else { "✗" });
+    }
+}`,
+                
+                go: `package main
+
+import "fmt"
+
+// 두 수의 합을 구하는 함수
+func addTwoNumbers(a, b int) int {
+    return a + b
+}
+
+func main() {
+    result := addTwoNumbers(5, 3)
+    fmt.Printf("결과: %d\\n", result) // 출력: 결과: 8
+    
+    // 테스트 케이스
+    testCases := []struct{a, b, expected int}{
+        {1, 2, 3},
+        {10, -5, 5},
+        {0, 0, 0},
+    }
+    
+    for _, tc := range testCases {
+        result := addTwoNumbers(tc.a, tc.b)
+        status := "✓"
+        if result != tc.expected {
+            status = "✗"
+        }
+        fmt.Printf("addTwoNumbers(%d, %d) = %d %s\\n", 
+                  tc.a, tc.b, result, status)
+    }
+}`,
+                
+                javascript: `/**
+ * 두 수의 합을 구하는 함수
+ * @param {number} a - 첫 번째 숫자
+ * @param {number} b - 두 번째 숫자
+ * @returns {number} 두 수의 합
+ */
+function addTwoNumbers(a, b) {
+    return a + b;
+}
+
+// 사용 예시
+const result = addTwoNumbers(5, 3);
+console.log(\`결과: \${result}\`); // 출력: 결과: 8
+
+// 테스트 케이스
+const testCases = [
+    [1, 2, 3],
+    [10, -5, 5],
+    [0, 0, 0],
+    [-3, -7, -10]
+];
+
+testCases.forEach(([a, b, expected]) => {
+    const result = addTwoNumbers(a, b);
+    const status = result === expected ? '✓' : '✗';
+    console.log(\`addTwoNumbers(\${a}, \${b}) = \${result} \${status}\`);
+});`,
+                
+                java: `public class Calculator {
+    /**
+     * 두 수의 합을 구하는 함수
+     * @param a 첫 번째 숫자
+     * @param b 두 번째 숫자
+     * @return 두 수의 합
+     */
+    public static int addTwoNumbers(int a, int b) {
+        return a + b;
+    }
+    
+    public static void main(String[] args) {
+        int result = addTwoNumbers(5, 3);
+        System.out.println("결과: " + result); // 출력: 결과: 8
+        
+        // 테스트 케이스
+        int[][] testCases = {{1, 2, 3}, {10, -5, 5}, {0, 0, 0}};
+        
+        for (int[] testCase : testCases) {
+            int a = testCase[0];
+            int b = testCase[1];
+            int expected = testCase[2];
+            int testResult = addTwoNumbers(a, b);
+            String status = testResult == expected ? "✓" : "✗";
+            System.out.printf("addTwoNumbers(%d, %d) = %d %s%n", 
+                            a, b, testResult, status);
+        }
+    }
+}`,
+                
+                c: `#include <stdio.h>
+
+/**
+ * 두 수의 합을 구하는 함수
+ * @param a 첫 번째 숫자
+ * @param b 두 번째 숫자
+ * @return 두 수의 합
+ */
+int add_two_numbers(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add_two_numbers(5, 3);
+    printf("결과: %d\\n", result); // 출력: 결과: 8
+    
+    // 테스트 케이스
+    int test_cases[][3] = {{1, 2, 3}, {10, -5, 5}, {0, 0, 0}};
+    int num_tests = sizeof(test_cases) / sizeof(test_cases[0]);
+    
+    for (int i = 0; i < num_tests; i++) {
+        int a = test_cases[i][0];
+        int b = test_cases[i][1];
+        int expected = test_cases[i][2];
+        int test_result = add_two_numbers(a, b);
+        char status = test_result == expected ? '✓' : '✗';
+        printf("add_two_numbers(%d, %d) = %d %c\\n", 
+               a, b, test_result, status);
+    }
+    
+    return 0;
+}`,
+                
+                cpp: `#include <iostream>
+#include <vector>
+
+/**
+ * 두 수의 합을 구하는 함수
+ * @param a 첫 번째 숫자
+ * @param b 두 번째 숫자
+ * @return 두 수의 합
+ */
+int addTwoNumbers(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = addTwoNumbers(5, 3);
+    std::cout << "결과: " << result << std::endl; // 출력: 결과: 8
+    
+    // 테스트 케이스
+    std::vector<std::vector<int>> testCases = {
+        {1, 2, 3}, {10, -5, 5}, {0, 0, 0}, {-3, -7, -10}
+    };
+    
+    for (const auto& testCase : testCases) {
+        int a = testCase[0];
+        int b = testCase[1];
+        int expected = testCase[2];
+        int testResult = addTwoNumbers(a, b);
+        char status = testResult == expected ? '✓' : '✗';
+        std::cout << "addTwoNumbers(" << a << ", " << b 
+                  << ") = " << testResult << " " << status << std::endl;
+    }
+    
+    return 0;
+}`,
+                
+                vlang: `// 두 수의 합을 구하는 함수
+fn add_two_numbers(a int, b int) int {
+    return a + b
+}
+
+fn main() {
+    result := add_two_numbers(5, 3)
+    println('결과: \${result}') // 출력: 결과: 8
+    
+    // 테스트 케이스
+    test_cases := [
+        [1, 2, 3],
+        [10, -5, 5],
+        [0, 0, 0],
+        [-3, -7, -10]
+    ]
+    
+    for test_case in test_cases {
+        a := test_case[0]
+        b := test_case[1]
+        expected := test_case[2]
+        test_result := add_two_numbers(a, b)
+        status := if test_result == expected { '✓' } else { '✗' }
+        println('add_two_numbers(\${a}, \${b}) = \${test_result} \${status}')
+    }
+}`
+            };
+            
+            // 2초 후 코드 표시
+            setTimeout(() => {
+                codeBlock.innerHTML = sampleCodes[language] || sampleCodes.python;
+            }, 2000);
+        }
+
+        // 페이지 로드시 초기 코드 표시
+        window.addEventListener('load', () => {
+            generateAlgorithm();
+        });
+    </script>
+</body>
+</html>
