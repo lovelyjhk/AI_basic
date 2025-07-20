@@ -12,7 +12,7 @@ NC='\033[0m' # No Color
 # Python 가상환경 확인 및 생성
 if [ ! -d "backend/venv" ]; then
     echo -e "${YELLOW}Python 가상환경을 생성합니다...${NC}"
-    python -m venv backend/venv
+    python3 -m venv backend/venv
 fi
 
 # 가상환경 활성화
@@ -39,7 +39,7 @@ fi
 # 데이터베이스 초기화
 echo -e "${BLUE}데이터베이스를 초기화합니다...${NC}"
 cd backend
-python -c "from app import app, db; app.app_context().push(); db.create_all(); print('✅ 데이터베이스가 초기화되었습니다.')"
+python3 -c "from app import app, db; app.app_context().push(); db.create_all(); print('✅ 데이터베이스가 초기화되었습니다.')"
 cd ..
 
 echo -e "${GREEN}✅ 설정이 완료되었습니다!${NC}"
