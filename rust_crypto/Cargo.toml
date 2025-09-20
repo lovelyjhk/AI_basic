@@ -1,0 +1,49 @@
+[package]
+name = "medical_crypto"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "medical_crypto"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# 암호화 라이브러리
+aes-gcm = "0.10.3"
+chacha20poly1305 = "0.10.1"
+argon2 = "0.5.0"
+sha2 = "0.10.6"
+hex = "0.4.3"
+
+# 비동기 처리
+tokio = { version = "1.0", features = ["full"] }
+futures = "0.3"
+
+# 직렬화
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# 오류 처리
+anyhow = "1.0"
+thiserror = "1.0"
+
+# 로깅
+log = "0.4"
+env_logger = "0.10"
+
+# 파일 시스템
+walkdir = "2.3"
+notify = "6.1"
+
+# FFI
+libc = "0.2"
+
+# 성능 측정
+criterion = "0.5"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "encryption_bench"
+harness = false
