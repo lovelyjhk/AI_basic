@@ -7,3 +7,8 @@ python -m app.services.rl_agent
 # 3. Rust 암호화 서버 실행
 cd rust_encrypt_server
 cargo run
+
+
+curl http://127.0.0.1:8000/detect
+curl http://127.0.0.1:8000/backup?emergency=1
+curl -X POST http://127.0.0.1:8000/encrypt -H "Content-Type: application/json" -d '{"records":[{"col1":123,"col2":456}]}'
