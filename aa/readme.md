@@ -122,8 +122,3 @@ MIT License (또는 저장소 설정에 따른 라이선스 참고)
 ```
 
 ---
-
-이 버전은 GitHub에서 **헤더, 코드블록, 리스트**가 제대로 렌더링됩니다.  
-
-👉 원하시면 제가 GitHub README에 바로 넣을 **배지(badge)** (예: Build Passing, Python/Rust Version, License 등)까지 추가해드릴까요?
-```
