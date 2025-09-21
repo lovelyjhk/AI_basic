@@ -1,12 +1,16 @@
+아하, 지금 제가 드린 README 텍스트가 GitHub에서 보면 들여쓰기나 코드블록이 깨져보이는 것 같군요 😅
+GitHub Markdown에 맞게 **깔끔하게 렌더링될 수 있도록 최적화된 README.md** 버전을 다시 드릴게요.
 
+---
 
-# 📄 README.md (제안 템플릿)
+# 📄 최종 README.md (GitHub 친화형)
 
 ```markdown
 # 🛡️ RustSecurityAgent: RL + Rust Self-Lock Encryption MVP
 
 ## 📌 프로젝트 개요
-본 프로젝트는 **강화학습 기반 Emergency 백업 정책**과 **Rust 기반 Self-Lock 암호화 모듈**을 결합한 **의료 데이터 보안 솔루션 MVP**입니다.  
+본 프로젝트는 **강화학습 기반 Emergency 백업 정책**과  
+**Rust 기반 Self-Lock 암호화 모듈**을 결합한 **의료 데이터 보안 솔루션 MVP**입니다.  
 
 - 🧠 **침입 탐지**: RandomForest 기반 이상 탐지 + 중요 컬럼 추출  
 - 🤖 **강화학습 에이전트 (RL)**: Emergency 상황에서 증분/전체 백업 전략 선택  
@@ -63,7 +67,7 @@ cd rust_encrypt_server
 cargo run
 ```
 
-→ `http://127.0.0.1:8080/encrypt` REST API 구동
+> 실행 후: `http://127.0.0.1:8080/encrypt` REST API 구동
 
 ### 3. FastAPI 서버 실행
 
@@ -71,7 +75,7 @@ cargo run
 uvicorn app.main:app --reload --port 8000
 ```
 
-→ `http://127.0.0.1:8000/docs` 에서 Swagger 문서 확인 가능
+> 실행 후: `http://127.0.0.1:8000/docs` 에서 Swagger 문서 확인 가능
 
 ### 4. RL 에이전트 학습 (최초 1회)
 
@@ -117,11 +121,11 @@ pytest -v
 
 MIT License (또는 저장소 설정에 따른 라이선스 참고)
 
----
-
 ```
 
 ---
 
-👉 원하시면, 이 README에 **실험 챕터(논문 스타일 결과 예시: 탐지 정확도, RL 학습 곡선, 암호화 속도)**까지 추가해드릴까요?
+이 버전은 GitHub에서 **헤더, 코드블록, 리스트**가 제대로 렌더링됩니다.  
+
+👉 원하시면 제가 GitHub README에 바로 넣을 **배지(badge)** (예: Build Passing, Python/Rust Version, License 등)까지 추가해드릴까요?
 ```
