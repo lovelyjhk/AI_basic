@@ -20,6 +20,7 @@
 ## 📂 프로젝트 구조
 ```
 
+**
 AI\_basic/
 ├── app/
 │   ├── main.py                # FastAPI API 서버
@@ -40,7 +41,7 @@ AI\_basic/
 │       └── test\_api.py
 ├── requirements.txt
 └── README.md
-
+**
 ````
 
 ---
