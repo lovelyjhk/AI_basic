@@ -1,3 +1,26 @@
+AI_basic/
+├── app/
+│   ├── main.py
+│   ├── services/
+│   │   ├── detector.py
+│   │   ├── rl_agent.py
+│   │   ├── rust_client.py
+│   │   └── backup_strategy.py
+├── rust_encrypt_server/
+│   └── src/main.rs
+│   └── Cargo.toml
+├── tests/
+│   ├── unit/
+│   │   ├── test_detector.py
+│   │   ├── test_backup_strategy.py
+│   └── integration/
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── .github/workflows/ci.yml
+
+
+
 # 1. Python API 서버 실행
 uvicorn app.main:app --reload --port 8000
 
