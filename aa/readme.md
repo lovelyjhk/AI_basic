@@ -1,7 +1,7 @@
 
 ---
 
-# 📄 최종 README.md (GitHub 친화형)
+
 
 ```markdown
 # 🛡️ RustSecurityAgent: RL + Rust Self-Lock Encryption MVP
