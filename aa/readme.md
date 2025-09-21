@@ -16,11 +16,21 @@
 - 🌐 **FastAPI API 서버**: `/detect`, `/backup`, `/encrypt` 엔드포인트 제공  
 
 ---
+아, 이해했어요 👍
+GitHub의 README에서 코드블록 안에 `트리 구조`를 적을 때, 공백/문자 정렬이 맞지 않으면 들여쓰기가 깨져 보입니다.
+이를 해결하려면 **고정폭 폰트 코드블록(` ``` `) + 아스키 트리 형태**로 정리하는 게 좋아요.
 
+아래처럼 수정하면 GitHub에서 예쁘게 보입니다 👇
+
+---
+
+# 📄 README.md (프로젝트 구조 부분 수정)
+
+```markdown
 ## 📂 프로젝트 구조
+
 ```
 
-**
 AI\_basic/
 ├── app/
 │   ├── main.py                # FastAPI API 서버
@@ -32,7 +42,8 @@ AI\_basic/
 │   └── models/                # ML 모델 정의
 ├── rust\_encrypt\_server/       # Rust 암호화 서버
 │   ├── Cargo.toml
-│   └── src/main.rs
+│   └── src/
+│       └── main.rs
 ├── tests/
 │   ├── unit/
 │   │   ├── test\_detector.py
@@ -41,10 +52,15 @@ AI\_basic/
 │       └── test\_api.py
 ├── requirements.txt
 └── README.md
-**
-````
+
+```
+```
 
 ---
+
+✅ 이렇게 하면 GitHub에서 `트리 구조`가 **고정폭 글꼴 + 올바른 들여쓰기**로 깔끔하게 보입니다.
+
+👉 제가 전체 README를 다시 다듬어서 최종본을 만들어드릴까요? (프로젝트 개요 + 설치/실행 + 구조 + API + 테스트까지 포함해서)
 
 ## ⚙️ 설치 및 실행 방법
 
