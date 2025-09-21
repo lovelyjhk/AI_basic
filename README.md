@@ -33,6 +33,8 @@
 ```bash
 # Python 가상환경 생성
 python -m venv venv
+.\.venv\Scripts\Activate.ps1
+
 source venv/bin/activate  # Linux/Mac
 # 또는 venv\Scripts\activate  # Windows
 
