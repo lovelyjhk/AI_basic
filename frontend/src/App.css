@@ -1,0 +1,119 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.App-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.connection-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.connection-status.connected {
+  background: rgba(76, 175, 80, 0.2);
+  border: 2px solid #4caf50;
+}
+
+.connection-status.disconnected {
+  background: rgba(244, 67, 54, 0.2);
+  border: 2px solid #f44336;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.connected .status-dot {
+  background: #4caf50;
+}
+
+.disconnected .status-dot {
+  background: #f44336;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.App-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.error-banner {
+  background: #f44336;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-banner p {
+  margin: 0.5rem 0;
+}
+
+.error-help {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.error-help code {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+.App-footer {
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.App-footer p {
+  margin: 0.5rem 0;
+  opacity: 0.8;
+}

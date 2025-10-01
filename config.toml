@@ -1,0 +1,26 @@
+[monitoring]
+watch_paths = ["./test_medical_data"]
+file_extensions = [".dcm", ".hl7", ".xml", ".json", ".db"]
+event_buffer_size = 10000
+
+[detection]
+entropy_threshold = 7.5
+rapid_change_threshold = 50
+suspicious_extensions = [".locked", ".encrypted", ".crypto", ".crypt", ".enc"]
+time_window_seconds = 60
+
+[backup]
+incremental_interval = 60
+retention_versions = 100
+block_size = 4096
+compression_enabled = true
+storage_path = "./backups"
+
+[encryption]
+algorithm = "AES-256-GCM"
+key_derivation = "Argon2id"
+
+[alerts]
+webhook_url = ""
+email_recipients = []
+sms_numbers = []
