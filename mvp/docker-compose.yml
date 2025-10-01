@@ -1,0 +1,82 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: emr
+      POSTGRES_PASSWORD: emrpass
+      POSTGRES_DB: emrdb
+    ports:
+      - "55432:5432"
+    volumes:
+      - ./infra/init:/docker-entrypoint-initdb.d
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "56379:6379"
+  minio:
+    image: quay.io/minio/minio:RELEASE.2024-09-22T00-33-43Z
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address :9001
+    ports:
+      - "59000:9000"
+      - "59001:9001"
+    volumes:
+      - ./minio:/data
+  nginx:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "58080:80"
+  emr-api:
+    build: ./emr-api
+    environment:
+      DATABASE_URL: postgresql://emr:emrpass@postgres:5432/emrdb
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "58001:8000"
+  pacs-server:
+    build: ./pacs-server
+    environment:
+      STORAGE_PATH: /data/pacs
+    volumes:
+      - ./data/pacs:/data/pacs
+    ports:
+      - "58002:8000"
+  model-svc:
+    build: ./model-svc
+    environment:
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - redis
+    ports:
+      - "58003:8000"
+  telemetry-agent:
+    build: ./telemetry-agent
+    environment:
+      REDIS_URL: redis://redis:6379
+      SRC_IP: 10.0.0.5
+    depends_on:
+      - redis
+  rust-guard:
+    build: ./rust-guard
+    environment:
+      REDIS_URL: redis://redis:6379
+      NGINX_ADMIN_URL: http://nginx
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      DATABASE_URL: postgresql://emr:emrpass@postgres:5432/emrdb
+    depends_on:
+      - redis
+      - nginx
+      - minio
+      - postgres
+    volumes:
+      - ./data/pacs:/data/pacs:ro
