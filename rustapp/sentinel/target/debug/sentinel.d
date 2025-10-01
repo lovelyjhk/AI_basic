@@ -1,0 +1,1 @@
+/workspace/rustapp/sentinel/target/debug/sentinel: /workspace/rustapp/sentinel/src/ai.rs /workspace/rustapp/sentinel/src/backup.rs /workspace/rustapp/sentinel/src/config.rs /workspace/rustapp/sentinel/src/crypto.rs /workspace/rustapp/sentinel/src/main.rs /workspace/rustapp/sentinel/src/monitor.rs /workspace/rustapp/sentinel/src/restore.rs
