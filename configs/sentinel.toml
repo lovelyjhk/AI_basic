@@ -1,0 +1,7 @@
+# Example Sentinel configuration
+source_dir = \"/workspace/data/source\"
+restore_dir = \"/workspace/data/restore\"
+store_dir = \"/workspace/artifacts/store\"
+key_path = \"/workspace/configs/key.bin\"
+ai_url = \"http://127.0.0.1:8000/predict\"
+chunk_size = 1048576
