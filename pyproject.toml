@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rxguard"
+version = "0.1.0"
+description = "Ransomware defense MVP for healthcare: encrypted, deduplicated incremental backups with realtime detection"
+authors = [{name = "MVP Team"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "cryptography>=42.0.0",
+  "watchdog>=3.0.0",
+  "tqdm>=4.66.0",
+  "PyYAML>=6.0.1",
+  "psutil>=5.9.0",
+  "xxhash>=3.4.1",
+]
+
+[project.scripts]
+rxguard = "rxguard.cli:main"
