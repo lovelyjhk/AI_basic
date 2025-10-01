@@ -1,72 +1,70 @@
-# FastAPI 및 웹 프레임워크
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-websockets==12.0
-pydantic==2.5.0
-pydantic-settings==2.1.0
+# ============================================================
+# 의료 사이버보안 AI-Rust 방어 시스템
+# 석사 논문용 MVP - Python 의존성
+# ============================================================
 
-# 데이터베이스 및 ORM
-sqlalchemy==2.0.23
-alembic==1.13.1
-psycopg2-binary==2.9.9
-asyncpg==0.29.0
-
-# 인증 및 보안
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-python-multipart==0.0.6
-cryptography==41.0.8
-
-# 머신러닝 및 강화학습
-torch==2.1.1
-torchvision==0.16.1
-stable-baselines3==2.2.1
-gymnasium==0.29.1
-numpy==1.24.4
+# ==================== 머신러닝 ====================
+# AI 예측 모델 (RandomForest)
 scikit-learn==1.3.2
+numpy==1.24.4
 pandas==2.1.4
 
+# 모델 저장/로드
+joblib==1.3.2
+
+# ==================== 데이터 분석 ====================
+# 통계 분석
+scipy==1.11.4
+
+# 그래프 생성 (논문용)
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# ==================== 시뮬레이션 ====================
 # 파일 모니터링
 watchdog==3.0.0
-aiofiles==23.2.1
 
-# HTTP 클라이언트
-httpx==0.25.2
-aiohttp==3.9.1
-
-# 로깅 및 모니터링
+# ==================== 유틸리티 ====================
+# 로깅
 loguru==0.7.2
-prometheus-client==0.19.0
-structlog==23.2.0
 
-# 테스트
-pytest==7.4.3
-pytest-asyncio==0.21.1
-pytest-cov==4.1.0
-httpx==0.25.2
-
-# 개발 도구
-black==23.11.0
-flake8==6.1.0
-mypy==1.7.1
-pre-commit==3.6.0
-
-# 환경 변수
+# 설정 관리
 python-dotenv==1.0.0
 
-# JSON 처리
-orjson==3.9.10
-
-# 시간 처리
+# 날짜/시간
 python-dateutil==2.8.2
 
-# 병렬 처리
-asyncio-throttle==1.0.2
+# ==================== 개발 도구 ====================
+# 코드 포맷팅
+black==23.11.0
 
-# 메시지 큐 (선택사항)
-redis==5.0.1
-celery==5.3.4
+# 린팅
+flake8==6.1.0
+pylint==3.0.3
 
-# API 문서
-sphinx==7.2.6
-sphinx-rtd-theme==1.3.0
+# 타입 체킹
+mypy==1.7.1
+
+# ==================== 테스트 ====================
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+
+# ==================== Rust 연동 (선택) ====================
+# PyO3로 빌드한 Rust 모듈 사용 시 추가 설치 필요 없음
+# 빌드 시에만 필요:
+# maturin==1.4.0  # Rust 빌드 도구 (개발 시만)
+
+# ==================== 선택적 의존성 ====================
+# Jupyter Notebook (실험용)
+# jupyter==1.0.0
+# ipython==8.18.1
+
+# 프로파일링 (성능 분석용)
+# py-spy==0.3.14
+# memory_profiler==0.61.0
+
+# ==================== 버전 정보 ====================
+# Python: 3.8+
+# 호환성: Linux, macOS, Windows
+# 최종 업데이트: 2025-10-01
