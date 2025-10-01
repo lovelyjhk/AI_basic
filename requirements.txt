@@ -1,3 +1,7 @@
+fastapi==0.104.1
+uvicorn[standard]>=0.23
+watchdog>=3.0.0
+requests>=2.31.0
 # FastAPI 및 웹 프레임워크
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
